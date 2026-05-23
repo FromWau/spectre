@@ -4,7 +4,7 @@
 
 **Goal:** Build a Cargo workspace with three Rust-on-ESP-IDF crates (`spectre-common`, `spectre-env`, `spectre-pc-power`) targeting ESP32-C3 SuperMini, exposing a small HTTP API per the design spec at `docs/superpowers/specs/2026-05-08-esp-env-monitor-design.md`.
 
-**Architecture:** Cargo workspace at `/home/fromml/Projects/esp/`. One shared library crate (`spectre-common`) holds Wi-Fi join, mDNS, HTTP server scaffolding, JSON envelope, error type. Two binary crates wire that up to their specific I/O: `spectre-env` reads BME280 + BH1750 + LM393 reed and serves `GET /api/v1/measurements`; `spectre-pc-power` drives one optocoupler GPIO and serves `POST /api/v1/power-events`. Pull-only HTTP, no auth, plain HTTP, mDNS hostnames.
+**Architecture:** Cargo workspace at `/home/fromml/Projects/spectre/`. One shared library crate (`spectre-common`) holds Wi-Fi join, mDNS, HTTP server scaffolding, JSON envelope, error type. Two binary crates wire that up to their specific I/O: `spectre-env` reads BME280 + BH1750 + LM393 reed and serves `GET /api/v1/measurements`; `spectre-pc-power` drives one optocoupler GPIO and serves `POST /api/v1/power-events`. Pull-only HTTP, no auth, plain HTTP, mDNS hostnames.
 
 **Tech Stack:** Rust nightly + RISC-V toolchain (`riscv32imc-unknown-none-elf`-via-ESP-IDF target `riscv32imc-esp-espidf`), `esp-idf-svc`, `esp-idf-hal`, `esp-idf-sys`, `embedded-hal` 1.0, `embedded-hal-bus`, `serde` + `serde_json`, `log` + `thiserror`, `toml-cfg`, `embedded-hal-mock` for tests, `espflash` + `cargo-espflash` for the host workflow.
 
@@ -15,7 +15,7 @@
 ## File Structure
 
 ```
-/home/fromml/Projects/esp/
+/home/fromml/Projects/spectre/
 +-- Cargo.toml                         (workspace root)
 +-- rust-toolchain.toml                (channel = nightly, target = riscv32imc-esp-espidf)
 +-- .cargo/config.toml                 (target alias + runner = espflash flash --monitor)
@@ -144,7 +144,7 @@ This task is environment setup only. Proceed to Task 1.
 
 Run:
 ```fish
-cd /home/fromml/Projects/esp
+cd /home/fromml/Projects/spectre
 git init -b main
 ```
 

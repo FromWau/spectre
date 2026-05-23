@@ -33,7 +33,7 @@ The fifth ESP32-C3 stays as a spare.
 
 Key choices:
 
-* **Cargo workspace** rooted at `/home/fromml/Projects/esp/`, project name `spectre`. Three crates: `spectre-common` (lib, dir `common/`), `spectre-env` (bin, dir `env-node/`), `spectre-pc-power` (bin, dir `pc-power-node/`).
+* **Cargo workspace** rooted at `/home/fromml/Projects/spectre/`, project name `spectre`. Three crates: `spectre-common` (lib, dir `common/`), `spectre-env` (bin, dir `env-node/`), `spectre-pc-power` (bin, dir `pc-power-node/`).
 * **Stack:** Rust on top of ESP-IDF via `esp-idf-svc` + `esp-idf-hal`. Async optional, blocking handlers fine for v1.
 * **Network:** Wi-Fi STA, DHCP, mDNS hostname per node (`spectre-env1.local`, `spectre-env2.local`, `spectre-env3.local`, `spectre-pc.local`).
 * **Transport:** plain HTTP/1.1 over TCP, no TLS. JSON bodies. No auth. Trusted home LAN.
